@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "f00d409a-1f59-4ef8-b6e5-5c6a40ca5d1d",
+		"name": "OData",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:44376/odata/books",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44376",
+					"path": [
+						"odata",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get books with operators",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:44376/odata/books?$filter=Price le 50&$expand=Press($select=Name)&$select=ISBN",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44376",
+					"path": [
+						"odata",
+						"books"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "Price le 50"
+						},
+						{
+							"key": "$expand",
+							"value": "Press($select=Name)"
+						},
+						{
+							"key": "$select",
+							"value": "ISBN"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get book",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:44376/odata/books(2)",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44376",
+					"path": [
+						"odata",
+						"books(2)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create book",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e3887ef8-4e33-4d05-8b17-6d1b7913fc9b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Id\":3,\"ISBN\":\"82-917-7192-5\",\r\n  \"Title\":\"Hary Potter\",\r\n  \"Author\":\"J. K. Rowling\",\r\n  \"Price\":199.99,\r\n  \"Location\":{\r\n     \"City\":\"Shanghai\",\r\n     \"Street\":\"Zhongshan RD\"\r\n   }\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44376/odata/books",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44376",
+					"path": [
+						"odata",
+						"books"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
